@@ -1,0 +1,50 @@
+{% extends 'macro.html' %}
+{% load static %}
+{% block title %}{{blogpost.title}}{% endblock %}
+{% block css %}
+<!-- <link href='{% static "css/sidebar.css" %}' rel='stylesheet' /> -->
+{% endblock %}
+{% block content %}
+  
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('{{blogpost.blogpostimage.thumbnail.url}}');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>{{blogpost.title}}</h2>
+              <p>{{blogpost.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="{% url 'blogposts' %}">Home</a></li>
+            <li>{{blogpost.title}}</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class='d-flex justify-content-center'>
+          <div class='col-12 col-lg-6'>
+            <div class='p-2'>
+              {{blogpost.content | safe}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Us Section -->
+
+   
+
+  </main><!-- End #main -->
+{% endblock %}

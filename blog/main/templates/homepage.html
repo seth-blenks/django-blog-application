@@ -1,0 +1,118 @@
+{% extends 'macro.html' %}
+{% load static %}
+{% block content %}
+  
+  <!-- ======= Breadcrumbs ======= -->
+  <style>
+  
+.services .card .card-img img{
+    width: 100%;
+    height: 200px;
+  }
+.services .card a{
+  font-size: 79%;
+}
+
+</style>
+
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('{% static "img/page_header.jpg" %}');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>Quick Time</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <span class='badge bg-dark'>hello</span> <span class='badge bg-warning'>hello</span> <span class='badge bg-warning'>hello</span>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="service" class="services pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span>Blog Posts</span>
+          <h2>Blog Posts</h2>
+
+        </div>
+
+        <div class="row gy-4">
+          {% for blog in page_obj %}
+          <div class="col-lg-3 col-md-5 col-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="card shadow">
+              <div class="card-img">
+                <img data-src="{{blog.blogpostimage.image.url}}" src="{{blog.blogpostimage.thumbnail.url}}" alt="" class="img-fluid lazy">
+              </div>
+              <h3><a href="{% url 'details' blog.category.slug blog.slug %}" class="stretched-link">{{blog.title}}</a></h3>
+              <p>{{blog.description}}</p>
+            </div>
+          </div><!-- End Card Item -->
+          {% endfor %}
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action" class="call-to-action">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h3>More Blogs</h3>
+            <p> Keep you customers up-to-date with recent developments in your business and services. </p>
+            <a class="cta-btn" href="#">Call To Action</a>
+            </dic>
+          </div>
+
+        </div>
+    </section><!-- End Call To Action Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="service" class="services pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span>More Articles</span>
+          <h2>More Articles</h2>
+
+        </div>
+
+        <div class="row gy-4">
+          {% for blog in page_obj %}
+          <div class="col-lg-3 col-md-5 col-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="card shadow">
+              <div class="card-img">
+                <img data-src="{{blog.blogpostimage.image.url}}" src="{{ blog.blogpostimage.thumbnail.url }}" alt="" class="img-fluid lazy">
+              </div>
+              <h3><a href="{% url 'details' blog.category.slug blog.slug %}" class="stretched-link">{{blog.title}}</a></h3>
+              <p>{{blog.description}}</p>
+            </div>
+          </div><!-- End Card Item -->
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+  </main><!-- End #main -->
+{% endblock %}
+{% block scripts %}
+<script src='{% static "js/yall.min.js" %}'></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        yall();
+      })
+  </script>
+
+{% endblock %}
